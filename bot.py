@@ -3,6 +3,7 @@ from telegram import Update
 from telegram.ext import CommandHandler, Application, ContextTypes, CallbackContext
 import datetime
 import random
+import os
 from datetime import datetime, timedelta, timezone
 
 from data.data_storage import DataStorage
@@ -14,9 +15,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-TOKEN = 'BOT_TOKEN'
-CHAT_ID = 'CHAT_ID'
-DATA_FILE = 'users.json'
+TOKEN = os.getenv('TOKEN')
+CHAT_ID = os.getenv('CHAT_ID')
+DATA_FILE = file_path = os.path.join(os.path.dirname(__file__), os.getenv('DATA_FILE'))
 
 SLEEP_REMINDER_TIME = "19:00"
 DAILY_SET_TIME = "07:00"
